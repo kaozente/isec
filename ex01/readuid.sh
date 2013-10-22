@@ -14,4 +14,7 @@ fi
 
 # fetch all text from personal website
 # -s suppresses statistics, so only the website's content is saved
+# then filter out everything that looks like a uid: firstname.lastname
+# assumption: first names are at least 2, last names at least 3 chars long
+# and uids are only composed of lowercase latin letters
 curl -s "$STUB$GET" | grep -o -P -e '[a-z]{2,}\.[a-z]{3,}'
