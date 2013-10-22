@@ -14,9 +14,4 @@ fi
 
 # fetch all text from personal website
 # -s suppresses statistics, so only the website's content is saved
-raw=$(curl -s $STUB$GET)
-
-#echo $raw
-uid=$(echo $raw | grep (karl))
-
-echo $uid 
+curl -s "$STUB$GET" | grep -o -P -e '[a-z]{2,}\.[a-z]{3,}'
