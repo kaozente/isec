@@ -1,7 +1,7 @@
 #!/bin/bash
 
 STUB="https://hpi-vdb.de/vulndb/isec_task/?uid="
-DEFAULTGET="karl.wolf"
+DEFAULTGET="x.x"
 
 if [ -n "$1" ]
 # Test whether command-line argument is present (non-empty).
@@ -18,3 +18,4 @@ fi
 # assumption: first names are at least 2, last names at least 3 chars long
 # and uids are only composed of lowercase latin letters
 curl -s "$STUB$GET" | grep -o -P -e '[a-z]{2,}\.[a-z]{3,}'
+
