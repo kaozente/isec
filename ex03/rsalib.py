@@ -1,10 +1,15 @@
 from math import sqrt, ceil
 import random 
 
+from dataFileWriter import dataFileWriter
+
 def encrypt(plain):
 	pass
 
 def decrypt(crypted):
+	pass
+
+def getKey():
 	pass
 
 def keygen():
@@ -31,7 +36,17 @@ def keygen():
 		d += phi_n
 
 	pv("found d: %d" % (d))
-	
+
+	# save to file
+
+
+def saveRsaData(p, q, N, d):
+	public = "%d;%d" % (d,N)
+	private =  "%d;%d" % (e,N)
+
+	# open file, overwrite existing file
+	f = open('crypto.conf', 'w')
+	f.write("%d\n%d\n%s\n%s\n" % p, q, public, private)
 
 
 def genPrimes(start, end, nr=1):
@@ -67,19 +82,23 @@ def ggt(x, y):
 
 def xEuclid(a,b):
 
-	# linear combination: u*a + v*b == ggt
+	''' 
+	compute linear combination: u*a + v*b == ggt(a,b)
+	'''
 
-    u = t = 1
-    v = s = 0
+	u = t = 1
+	v = s = 0
 
-    while b > 0:
-        q = a // b # // = div
-        a, b = b, a - q*b
-        u, s = s, u - q*s
-        v, t = t, v - q*t
+	while b > 0:
+		q = a // b # // = div
+		a, b = b, a - q*b
+		u, s = s, u - q*s
+		v, t = t, v - q*t
 
-    return a, u, v
+	return a, u, v
 
 def pv(msg):
-	''' print verbose '''
+	''' 
+	comment / uncomment to print verbose
+	'''
 	print(msg)
